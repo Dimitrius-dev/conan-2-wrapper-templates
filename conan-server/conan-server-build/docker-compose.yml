@@ -1,0 +1,15 @@
+version: "3"
+services:
+  conan_server:
+    build: ./conan-server-image
+    environment:
+      - HOST_NAME=83.239.111.49
+      - PORT=9345
+    volumes:
+      - conan_db:/data
+    ports:
+      - "9300:9345"
+
+volumes:
+  conan_db:
+    external: true
