@@ -25,14 +25,14 @@ if __name__ == '__main__':
               "pattern: key1=value1 key1=value2 ...\n"
               "example: \"python ./config_setter file.conf name=test1 password=test2\"")
         exit()
-    elif (len(sys.argv)) <= 2:
+    elif (len(sys.argv)) <= 3:
         print("invalid parameters")
         exit()
 
-    sys_params = sys.argv[2:]
+    sys_params = sys.argv[3:]
 
     path_in = sys.argv[1]
-    #path_out = sys.argv[2]
+    path_out = sys.argv[2]
 
     sys_param_list = []
 
@@ -90,5 +90,5 @@ if __name__ == '__main__':
             continue
 
     #print(output)
-    with open(path_in, 'w') as file:
+    with open(path_out, 'w') as file:
         file.write(output)
