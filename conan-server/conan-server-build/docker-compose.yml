@@ -3,8 +3,9 @@ services:
   conan_server:
     build: ./conan-server-image
     environment:
-      - HOST_NAME=83.239.111.49
+      - HOST_NAME=conancustom
       - PORT=9345
+      - ROOT_USER_PASSWORD=root
     volumes:
       - conan_db:/data
     ports:
