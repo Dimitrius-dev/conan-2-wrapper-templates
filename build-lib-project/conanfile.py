@@ -1,6 +1,9 @@
+import os.path
+
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.tools.files import copy
+from conan.errors import ConanInvalidConfiguration
 
 
 class helloLib(ConanFile):
@@ -19,17 +22,41 @@ class helloLib(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
+
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = ("CMakeLists.txt",
-                       "src/*",
-                       "include/*")
+    # exports_sources = (root_path+"CMakeLists.txt",
+    #                    root_path+"src/*",
+    #                    "include/*",
+    #                    "*.cmake"
+    #                    )
+
+    #"CMakeLists.txt"
+    #
+    # exports_sources = ("lib/*",
+    #                    "*.cmake"
+    #                    )
+
+    def export_sources(self):
+        copy(self, "*", os.path.join(self.recipe_folder, "lib"), self.export_sources_folder, keep_path = True)
+
+    def requirements(self):
+        self.requires("spdlog/1.12.0")
+        pass
+        #dependencies
+        #self.test_requires("gtest/1.11.0")
+
+    def validate(self):
+        if self.settings.os == "Windows":
+            raise ConanInvalidConfiguration("Windows is not supported")
 
     def config_options(self):
-        if self.settings.os == "Windows":
-            del self.options.fPIC
+        pass
+        #if self.settings.os == "Windows":
+        #    del self.options.fPIC
 
-    def layout(self):
-        cmake_layout(self)
+    # def layout(self):
+    #     pass
+    #     #cmake_layout(self)
 
     def generate(self):
         deps = CMakeDeps(self)
@@ -44,9 +71,12 @@ class helloLib(ConanFile):
 
     def package(self):
         copy(self, "include/*", self.source_folder, self.package_folder, keep_path=True)
-        #copy(self, "*.hpp", self.source_folder, self.package_folder, keep_path=True)
         cmake = CMake(self)
         cmake.install()
 
+    # def imports(self):
+    #     self.copy("*.dll", "", "bin")
+    #     self.copy("*.dylib", "", "lib")
+
     def package_info(self):
-        self.cpp_info.libs = ["hello"]
+        self.cpp_info.libs = [self.name]
