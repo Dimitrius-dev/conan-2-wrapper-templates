@@ -2,6 +2,7 @@ version: "3"
 services:
   conan_server:
     build: ./conan-server-image
+    image: conan-server
     environment:
       - HOST_NAME=conancustom
       - PORT=9345
