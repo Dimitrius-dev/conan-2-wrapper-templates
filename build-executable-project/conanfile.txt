@@ -1,0 +1,10 @@
+[requires]
+hello/0.0.1
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+*:shared=False
+*:fpic=True
