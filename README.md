@@ -1,22 +1,24 @@
 # Conan template
 ___
-#### Project guide show the use packet manager Conan 2.0 for c/c++ projects.
+#### Project guide show the use package manager Conan 2.0 for c/c++ projects.
 ___
 Official guide: https://docs.conan.io/2/
   
 Other languages:
++ [eng](./README.md)
 + [rus](./doc/README_RUS.md)
 ___
 ### Desription
-Conan 2.0 packet manager is similar to Maven. Maven is a packet manager for classic Java projects
+This project-guide is designed to integrate ```conan 2.0 package manager with special ready-made project templates``` to C++ development.  
+Conan 2.0 package manager is similar to Maven. Maven is a package manager for classic Java projects
 
 ### Install conan
 ```
 pip install conan
 ```
 
-In conan all data is contained in repositories. Every repository has massive of packets.
-Every packet is a library.
+In conan all data is contained in repositories. Every repository has massive of packages.
+Every package is a library.
 There are two types of repository:
 + Local (client - local cache)
 + Remote (official - conancenter or custom (custom_server https://docs.conan.io/2/reference/config_files/remotes.html) )
@@ -30,8 +32,8 @@ Repository's data hierarchy
 |  |
 |  +--+-revision #1 (library revision)
 |  |  |
-|  |  +--packet #1 (library bild)
-|  |  +--packet #2 (library bild)
+|  |  +--package #1 (library bild)
+|  |  +--package #2 (library bild)
 |  |
 |  +--+-revision #2 . . .
 |     | . . .

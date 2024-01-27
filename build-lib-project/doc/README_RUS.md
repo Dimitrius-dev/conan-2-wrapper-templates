@@ -26,6 +26,7 @@ build-lib-...
             *.*
         CMakeLists.txt
     conanfile.py
+    CMakeConanProject.cmake
     CMakeLists.txt
 ```
 Для создания библиотеки требуются:

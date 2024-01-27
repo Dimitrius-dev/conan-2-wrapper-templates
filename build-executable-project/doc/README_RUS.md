@@ -33,12 +33,8 @@ project-...
 ## Сборка с помощью шаблона ```CMakeConanProject.cmake```
 ___
 
-Для использования шаблона сборки требуется указать на cmake требуемую цель проекта (target)
-и указать её в качестве переменной ```project_target``` перед включением файла CMakeConanProject.cmake.  
+Для использования шаблона сборки требуется указать путь до conan в качестве переменной ```project_target``` перед включением файла CMakeConanProject.cmake.  
 Пример:
-В ```CMakeLists.txt``` файле мы указали:  
-+ Путь к conan (conan) - ```conan_test``` до шаблона
-+ Включили шаблон ```CMakeConanProject.txt``` до определения цели
 
 Пример вставки:
 ```
@@ -47,6 +43,10 @@ set(conan "/home/belov/.local/bin/conan")
 include(CMakeConanProject.cmake)
 ...
 ```
+Вставка должна быть перед всеми ```add_subdirectory```
+
+Значение ```conan``` - путь до conan, укажите ваше значение.
+
 
 ## С использованием ```CLion```
 
@@ -62,7 +62,7 @@ include(CMakeConanProject.cmake)
 1. ```mkdir build && cd build```
 2. ```cmake ../ -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/g++-11```,
    где ```DCMAKE_BUILD_TYPE``` - тип сборки, ```DCMAKE_CXX_COMPILER``` - путь к компилятору C++. Также можно указать генератор.
-3. ```cmake --build . -t=conan_test```, где ```-t``` - цель (target) собираемого проекта, она также должна быть указана в переменной ```project_target``` в CMakeLists.txt
+3. ```cmake --build . -t=conan_test```, где ```-t``` - цель (target) собираемого проекта.
 
 
 ## Сборка ручная (без шаблона)
