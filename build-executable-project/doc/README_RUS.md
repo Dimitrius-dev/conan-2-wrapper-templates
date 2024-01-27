@@ -8,19 +8,21 @@ ___
 ___
 ```
 project-...
-   include
-      *.h
-      *.hpp
    [some-directory]
-      [some-subdirectory]
-      [some-subdirectory]
-      *.*
-      ...
-      CMakeLists.txt   
+       include
+          *.h
+          *.hpp
+          *.*
+       src
+          *.cpp
+          *.*
+       CMakeLists.txt   
    resources
       *.*
-   CMakeLists.txt
-   conanfile.txt or conanfile.py  
+   conanfile.txt или conanfile.py 
+   CMakeResources.cmake
+   CMakeConanProject
+   CMakeLists.txt 
 ```
 Для создания проекта требуются:
 + Исходники - сам проект
@@ -36,7 +38,7 @@ ___
 Пример:
 В ```CMakeLists.txt``` файле мы указали:  
 + Путь к conan (conan) - ```conan_test``` до шаблона
-+ Включили шаблон ```CMakeLists.txt``` до определения цели
++ Включили шаблон ```CMakeConanProject.txt``` до определения цели
 
 Пример вставки:
 ```
