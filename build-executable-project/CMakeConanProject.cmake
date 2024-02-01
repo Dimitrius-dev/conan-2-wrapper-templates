@@ -15,7 +15,10 @@ execute_process(
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/conanfile.txt ${CMAKE_BINARY_DIR}/conanfile.txt
         COMMAND ${conan} install ${CMAKE_BINARY_DIR}
         -s build_type=${CMAKE_BUILD_TYPE}
-        --output-folder=${CMAKE_BINARY_DIR}/conan_files --build=missing RESULT_VARIABLE OUTPUT
+        --output-folder=${CMAKE_BINARY_DIR}/conan_files --build=missing
+        -pr:b=${conan_profile}
+        -pr:h=${conan_profile}
+        RESULT_VARIABLE OUTPUT
 )
 
 #message("conan output${OUTPUT}")
