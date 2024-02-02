@@ -5,7 +5,6 @@ message("=== connected conan library template ===")
 execute_process(
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/conanfile.py ${CMAKE_BINARY_DIR}/conanfile.py
         COMMAND ${conan} install ${CMAKE_BINARY_DIR}
-        -s build_type=${CMAKE_BUILD_TYPE}
         --output-folder=${CMAKE_BINARY_DIR}/conan_files --build=missing
         -pr:b=${conan_profile}
         -pr:h=${conan_profile}
