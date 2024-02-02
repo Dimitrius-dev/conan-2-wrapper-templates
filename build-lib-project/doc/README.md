@@ -47,10 +47,14 @@ To connect project with ```CMakeConanProject.cmake``` template change root file 
 ```
 . . .
 set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
 include(CMakeConanProject.cmake)
 . . .
 ```
-Value ```conan``` - is a path to conan, set your value.
+This include is before all ```add_subdirectory```
+
+Value ```conan``` - is the path to conan, set your value.
+Value ```conan_profile``` - is the path to the conan profile or the profile name.
 
 
 ## With IDE ```CLion```

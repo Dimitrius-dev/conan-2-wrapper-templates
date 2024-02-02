@@ -12,10 +12,23 @@ ___
 This project-guide is designed to integrate ```conan 2.0 package manager with special ready-made project templates``` to C++ development.  
 Conan 2.0 package manager is similar to Maven. Maven is a package manager for classic Java projects
 
+## Install required tools
+Install ```pip``` for further dependencies
+
 ### Install conan
 ```
 pip install conan
 ```
+### Install custom develop team settings set by using command
+```
+conan config install [custom_conan_settings_zip_url]
+```
+Example: ```conan config install http://127.0.0.1:8000/conan_settings.zip```
+
+The custom_conan_settings_url is a link to zip archive. The archive consist of few files:
++ ```remotes.json``` - list of remotes conan repositories 
++ ```settings_user.yml``` - additional custom settings file to the main settings.yml. Used to validate profile values
+
 
 In conan all data is contained in repositories. Every repository has massive of packages.
 Every package is a library.

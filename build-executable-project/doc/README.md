@@ -37,12 +37,14 @@ root file ```CMakeLists.txt``` with this:
 ```
 ...
 set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
 include(CMakeConanProject.cmake)
 ...
 ```
 This include is before all ```add_subdirectory```
 
-Value ```conan``` - is a path to conan, set your value.
+Value ```conan``` - is the path to conan, set your value.
+Value ```conan_profile``` - is the path to the conan profile or the profile name.
 
 
 ## With IDE ```CLion```
