@@ -49,11 +49,12 @@ ___
 ```
 . . .
 set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
 include(CMakeConanProject.cmake)
 . . .
 ```
 Переменная ```conan``` - путь к conan, поставьте свое значение.
-
+Переменная ```conan_profile``` - путь к conan profile или его название.
 
 ## C использование ```CLion```
 Для создания библиотеки требуется запустить build для cmake цели -

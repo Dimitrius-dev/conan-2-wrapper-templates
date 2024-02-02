@@ -40,19 +40,20 @@ ___
 ```
 ...
 set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
 include(CMakeConanProject.cmake)
 ...
 ```
 Вставка должна быть перед всеми ```add_subdirectory```
 
 Значение ```conan``` - путь до conan, укажите ваше значение.
-
+Переменная ```conan_profile``` - путь к conan profile или его название.
 
 ## С использованием ```CLion```
 
 Для сборки требуется:
 1. Перезапустить CMake project для генерации
-последней конфигуарции проекта
+последней конфигурации проекта
 2. Запустить build для cmake цели (target)
 
 ## Без использования ```CLion```
