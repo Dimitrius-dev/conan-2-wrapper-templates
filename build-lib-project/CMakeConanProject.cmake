@@ -15,7 +15,5 @@ include(${CMAKE_BINARY_DIR}/conan_files/conan_toolchain.cmake)
 
 add_custom_target(create_lib
         COMMAND ${CMAKE_COMMAND} -E echo "--- create lib ---"
-        COMMAND ${conan} create ${CMAKE_SOURCE_DIR}
-        -pr:b=${conan_profile}
-        -pr:h=${conan_profile}
+        COMMAND ${conan} export ${CMAKE_SOURCE_DIR}
 )

@@ -73,7 +73,7 @@ class helloLib(ConanFile):
         if self.settings.build_type == "Release": cmake_variables["CMAKE_CXX_FLAGS"] = self.options.release_lib_flags
         if self.settings.build_type == "Debug": cmake_variables["CMAKE_CXX_FLAGS"] = self.options.debug_lib_flags
 
-        cmake.configure()
+        cmake.configure(variables=cmake_variables)
         cmake.build()
 
     def package(self):
