@@ -31,7 +31,7 @@ class helloLib(ConanFile):
         "shared": False,
         "fPIC": True,
         "debug_lib_flags": "",
-        "release_lib_flags": "ANY"
+        "release_lib_flags": ""
     }
 
     def export_sources(self):
