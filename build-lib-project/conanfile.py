@@ -19,22 +19,20 @@ class helloLib(ConanFile):
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True}
 
+    options = {
+        "shared": [True, False],
+        "fPIC": [True, False],
+        "debug_lib_flags": ["", "ANY"],
+        "release_lib_flags": ["", "ANY"]
+    }
 
-    # Sources are located in the same place as this recipe, copy them to the recipe
-    # exports_sources = (root_path+"CMakeLists.txt",
-    #                    root_path+"src/*",
-    #                    "include/*",
-    #                    "*.cmake"
-    #                    )
-
-    #"CMakeLists.txt"
-    #
-    # exports_sources = ("lib/*",
-    #                    "*.cmake"
-    #                    )
+    default_options = {
+        "shared": False,
+        "fPIC": True,
+        "debug_lib_flags": "",
+        "release_lib_flags": "ANY"
+    }
 
     def export_sources(self):
         copy(self, "*", os.path.join(self.recipe_folder, "lib"), self.export_sources_folder, keep_path = True)
@@ -66,7 +64,16 @@ class helloLib(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure()
+
+        cmake_variables = {
+            "CMAKE_CXX_FLAGS": ""
+        }
+
+        #print(f"current build type - {self.settings.build_type}")
+        if self.settings.build_type == "Release": cmake_variables["CMAKE_CXX_FLAGS"] = self.options.release_lib_flags
+        if self.settings.build_type == "Debug": cmake_variables["CMAKE_CXX_FLAGS"] = self.options.debug_lib_flags
+
+        cmake.configure(variables=cmake_variables)
         cmake.build()
 
     def package(self):
@@ -80,3 +87,7 @@ class helloLib(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
+
+    # use it for header-only library, so the library has not any binaries for specific settings
+    # def package_id(self):
+    #     self.info.clear()

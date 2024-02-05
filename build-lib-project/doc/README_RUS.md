@@ -26,6 +26,7 @@ build-lib-...
             *.*
         CMakeLists.txt
     conanfile.py
+    CMakeConanProject.cmake
     CMakeLists.txt
 ```
 Для создания библиотеки требуются:
@@ -44,6 +45,16 @@ build-lib-...
 
 ## Сборка с помощью шаблона ```CMakeConanProject.cmake```
 ___
+Для подключения шаблона в корневом файле ```CMakeLists.txt``` сделайте следующую вставку
+```
+. . .
+set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
+include(CMakeConanProject.cmake)
+. . .
+```
+Переменная ```conan``` - путь к conan, поставьте свое значение.
+Переменная ```conan_profile``` - путь к conan profile или его название.
 
 ## C использование ```CLion```
 Для создания библиотеки требуется запустить build для cmake цели -

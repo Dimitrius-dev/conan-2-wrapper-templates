@@ -8,19 +8,21 @@ ___
 ___
 ```
 project-...
-   include
-      *.h
-      *.hpp
    [some-directory]
-      [some-subdirectory]
-      [some-subdirectory]
-      *.*
-      ...
-      CMakeLists.txt   
+       include
+          *.h
+          *.hpp
+          *.*
+       src
+          *.cpp
+          *.*
+       CMakeLists.txt   
    resources
       *.*
-   CMakeLists.txt
-   conanfile.txt or conanfile.py  
+   conanfile.txt или conanfile.py 
+   CMakeResources.cmake
+   CMakeConanProject
+   CMakeLists.txt 
 ```
 Для создания проекта требуются:
 + Исходники - сам проект
@@ -31,26 +33,27 @@ project-...
 ## Сборка с помощью шаблона ```CMakeConanProject.cmake```
 ___
 
-Для использования шаблона сборки требуется указать на cmake требуемую цель проекта (target)
-и указать её в качестве переменной ```project_target``` перед включением файла CMakeConanProject.cmake.  
+Для использования шаблона сборки требуется указать путь до conan в качестве переменной ```project_target``` перед включением файла CMakeConanProject.cmake.  
 Пример:
-В ```CMakeLists.txt``` файле мы указали:  
-+ Путь к conan (conan) - ```conan_test``` до шаблона
-+ Включили шаблон ```CMakeLists.txt``` до определения цели
 
 Пример вставки:
 ```
 ...
 set(conan "/home/belov/.local/bin/conan")
+set(conan_profile "default")
 include(CMakeConanProject.cmake)
 ...
 ```
+Вставка должна быть перед всеми ```add_subdirectory```
+
+Значение ```conan``` - путь до conan, укажите ваше значение.
+Переменная ```conan_profile``` - путь к conan profile или его название.
 
 ## С использованием ```CLion```
 
 Для сборки требуется:
 1. Перезапустить CMake project для генерации
-последней конфигуарции проекта
+последней конфигурации проекта
 2. Запустить build для cmake цели (target)
 
 ## Без использования ```CLion```
@@ -60,7 +63,7 @@ include(CMakeConanProject.cmake)
 1. ```mkdir build && cd build```
 2. ```cmake ../ -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/g++-11```,
    где ```DCMAKE_BUILD_TYPE``` - тип сборки, ```DCMAKE_CXX_COMPILER``` - путь к компилятору C++. Также можно указать генератор.
-3. ```cmake --build . -t=conan_test```, где ```-t``` - цель (target) собираемого проекта, она также должна быть указана в переменной ```project_target``` в CMakeLists.txt
+3. ```cmake --build . -t=conan_test```, где ```-t``` - цель (target) собираемого проекта.
 
 
 ## Сборка ручная (без шаблона)
