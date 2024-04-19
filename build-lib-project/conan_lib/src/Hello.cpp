@@ -15,7 +15,7 @@ void Hello::run() {
 
     //spdlog::logger logger("log1");
     spdlog::set_level(spdlog::level::debug);
-    spdlog::warn("hello warn");
+    spdlog::warn("da");// warn("hello warn");
     spdlog::debug("hello debug");
     spdlog::info("hello info");
 

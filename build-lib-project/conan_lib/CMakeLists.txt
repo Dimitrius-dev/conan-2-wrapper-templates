@@ -33,3 +33,9 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         )
 
 install(TARGETS ${CMAKE_PROJECT_NAME})
+
+
+message("BUILD_TESTING:${BUILD_TESTING}")
+if (NOT BUILD_TESTING STREQUAL OFF)
+        add_subdirectory(test)
+endif()
