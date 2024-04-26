@@ -63,9 +63,10 @@ class hello(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure()
+        testing = not (self.conf.get("tools.build:skip_test"))
+        cmake.configure(variables={"ENABLE_TESTING":testing})
         cmake.build()
-        if not self.conf.get("tools.build:skip_test"):
+        if testing:
             self.run(os.path.join("test", "test"))
 
     def package(self):

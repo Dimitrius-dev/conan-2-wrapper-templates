@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.26)
 project(hello LANGUAGES CXX)
 
-message("no using c compiler - ${CMAKE_C_COMPILER}")
+set(THIS_FILENAME "${CMAKE_PROJECT_NAME}:ConanLibPreset")
+message(STATUS "${THIS_FILENAME}:no using c compiler - ${CMAKE_C_COMPILER}")
 set(CMAKE_CXX_STANDARD 20)
 #set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #set(CMAKE_CXX_EXTENSIONS OFF)
@@ -34,8 +35,10 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
 
 install(TARGETS ${CMAKE_PROJECT_NAME})
 
+# default variable for ctest
+message(STATUS "${THIS_FILENAME}:var BUILD_TESTING:${ENABLE_TESTING}")
 
-message("BUILD_TESTING:${BUILD_TESTING}")
-if (NOT BUILD_TESTING STREQUAL OFF)
+if(ENABLE_TESTING)
+        message(STATUS "${THIS_FILENAME}:BUILDING TESTS")
         add_subdirectory(test)
 endif()
