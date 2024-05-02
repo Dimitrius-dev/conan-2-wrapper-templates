@@ -32,9 +32,6 @@ class hello(ConanFile):
 
     is_header_only_lib = False
 
-    def export_sources(self):
-        copy(self, "*", os.path.join(self.recipe_folder, "conan_lib"), self.export_sources_folder, keep_path = True)
-
     def requirements(self):
         self.requires("spdlog/1.12.0")
         self.test_requires("gtest/1.14.0")
@@ -51,9 +48,17 @@ class hello(ConanFile):
         #if self.settings.os == "Windows":
         #    del self.options.fPIC
 
-    # def layout(self):
-    #     pass
-    #     #cmake_layout(self)
+#======================================================================================
+#========================== GENERATED CODE BELOW ======================================
+#======================================================================================
+#=================== USED FOR "ConanLibPreset.cmake" FILE =============================
+#======================================================================================
+
+    def export_sources(self):
+        copy(self, "*", os.path.join(self.recipe_folder, "conan_lib"), self.export_sources_folder, keep_path = True)
+
+    def layout(self):
+        pass
 
     def generate(self):
         deps = CMakeDeps(self)
@@ -64,16 +69,16 @@ class hello(ConanFile):
     def build(self):
         cmake = CMake(self)
         testing = not (self.conf.get("tools.build:skip_test"))
-        cmake.configure(variables={"ENABLE_TESTING":testing})
+        cmake.configure(variables={"CT_ENABLE_TESTING":testing})
         cmake.build()
         if testing:
             self.run(os.path.join("test", "test"))
 
     def package(self):
-            copy(self, "include/*", self.source_folder, self.package_folder, keep_path=True)
-            cmake = CMake(self)
-            cmake.install()
-            pass
+        copy(self, "include/*", self.source_folder, self.package_folder, keep_path=True)
+        cmake = CMake(self)
+        cmake.install()
+        pass
 
     def deploy(self):
         copy(self, "*", self.package_folder, self.deploy_folder)
