@@ -57,7 +57,7 @@ macro(check_param arg_name)
     message(STATUS "initialized ${arg_name}: ${${arg_name}}")
 endmacro()
 
-message("= check parameters =")
+message(STATUS "check parameters")
 check_param("conan")
 check_param("conan_profile")
 
