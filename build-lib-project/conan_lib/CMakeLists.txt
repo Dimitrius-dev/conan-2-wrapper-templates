@@ -38,7 +38,7 @@ install(TARGETS ${CMAKE_PROJECT_NAME})
 # default variable for ctest
 message(STATUS "${THIS_FILENAME}:var BUILD_TESTING:${ENABLE_TESTING}")
 
-if(ENABLE_TESTING)
+if(CT_ENABLE_TESTING)
         message(STATUS "${THIS_FILENAME}:BUILDING TESTS")
         add_subdirectory(test)
 endif()
