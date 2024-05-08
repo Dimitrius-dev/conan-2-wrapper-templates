@@ -7,18 +7,21 @@ macro(get_file url arg)
     endif ()
 endmacro()
 
-# conan
+set(lib_url https://raw.githubusercontent.com/Dimitrius-dev/conan-2-wrapper-templates/dev/tools)
+
+
+# "conan_exec_preset" plugin
 set(conan "/usr/local/bin/conan") # set conan path
 set(conan_profile "default") # set host conan profile
 set(conan_testing ON) # set host conan profile
-
-set(lib_url https://raw.githubusercontent.com/Dimitrius-dev/conan-2-wrapper-templates/dev/tools)
-
-get_file(${lib_url}/conan_exec/ConanExecPreset.cmake "ConanExecPreset.cmake")
+get_file(${lib_url}/conan_exec_preset/ConanExecPreset.cmake "ConanExecPreset.cmake")
 include(ConanExecPreset.cmake)
+get_file(${lib_url}/conan_exec/conanfile.py          "conanfile.py")
 
+# "resources" plugin
 get_file(${lib_url}/resources/CMakeResources.cmake "CMakeResources.cmake")
 include(CMakeResources.cmake)
+
 
 # main target
 add_subdirectory(main)
