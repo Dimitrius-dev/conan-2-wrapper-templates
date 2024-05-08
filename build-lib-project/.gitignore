@@ -1,5 +1,6 @@
-*
-!*.txt
-!*/*
-cmake-build*/
 .idea/
+cmake-build*/
+
+/*.cmake
+/*.py
+/*.gen
