@@ -1,72 +1,79 @@
 # Conan template
 ___
-#### Project guide show the use package manager Conan 2.0 for c/c++ projects.
+#### Проект-справка для наглядного использования пакетного менеджера Conan 2.0 в c/c++ проектах.
 ___
-Official guide: https://docs.conan.io/2/
-  
-Other languages:
-+ [eng](./README.md)
-+ [rus](./doc/README_RUS.md)
+Официальная справка: https://docs.conan.io/2/
 ___
-### Desription
-This project-guide is designed to integrate ```conan 2.0 package manager with special ready-made project templates``` to C++ development.  
-Conan 2.0 package manager is similar to Maven. Maven is a package manager for classic Java projects
+### Описание
+Данный проект-справка создан для ускоренной интеграции conan в C++ проекты с помощью готовых шаблонов.  
+В общих чертах данный пакетный менеджер сильно похож по функционалу на пакетный менеджер Maven для языка Java.
 
-## Install required tools
-Install ```pip``` for further dependencies
+### Инструменты установки
+Для установки всех компонентов мы должны уже иметь на компьютере ```pip```
 
-### Install conan
+### Установка conan
 ```
 pip install conan
 ```
-### Install custom develop team settings set by using command
+### Установка используемых настроек для conan для вашей команды разработки
 ```
 conan config install [custom_conan_settings_zip_url]
 ```
-Example: ```conan config install http://127.0.0.1:8000/conan_settings.zip```
+Пример: ```conan config install http://домен_ресурса/conan_settings.zip```
 
-The custom_conan_settings_url is a link to zip archive. The archive consist of few files:
-+ ```remotes.json``` - list of remotes conan repositories 
-+ ```settings_user.yml``` - additional custom settings file to the main settings.yml. Used to validate profile values
+Ссылка custom_conan_settings_url ведет на zip архив. Этот архив содержит в себе файлы настроек:
++ ```remotes.json``` - список удаленных репозиториев
++ ```settings_user.yml``` - добавка к файлу settings.yml разрешенных значений настроек для профилей
 
+Все строится на репозиториях с пакетами. Каждый пакет - библиотека.
+Репозитории бывают двух типов:
++ Локальные (клиентский - local cache)
++ Удаленные (официальный - conancenter, свой - custom_server(https://docs.conan.io/2/reference/config_files/remotes.html) )
 
-In conan all data is contained in repositories. Every repository has massive of packages.
-Every package is a library.
-There are two types of repository:
-+ Local (client - local cache)
-+ Remote (official - conancenter or custom (custom_server https://docs.conan.io/2/reference/config_files/remotes.html) )
+Локальный существует на любом устройстве, которое создает и использует пакеты.  
+Удаленные лишь хранят множество пакетов, которые можно получить на локальные.
 
-Local repository is used on local computer.  
-Remote repository os used on server with dedicated ip.
-
-Repository's data hierarchy
+Иерархия данных
 ```
-+--+-lib example 0.0.1 (library version)
++--+-библиотека example 0.0.1 (версия библиотеки)
 |  |
-|  +--+-revision #1 (library revision)
+|  +--+-ревизия #1 (ревизия библиотеки)
 |  |  |
-|  |  +--package #1 (library bild)
-|  |  +--package #2 (library bild)
+|  |  +--пакет #1 (сборка библиотеки)
+|  |  +--пакет #2 (сборка библиотеки)
 |  |
-|  +--+-revision #2 . . .
+|  +--+-ревизия #2 . . .
 |     | . . .
 |
-+--+-lib example 0.0.2 (library version)
++--+-библиотека example 0.0.2 (версия библиотеки)
    | . . .
 ```
-Firstly in order to use conan, create ```profile```. Profile has set of settings of your system.
-This is mandatory requirement to use lib compiling with conan.  
-User edits profile. So profile data is not verified by any automatic system.
+Сначала требуется создать ```profile``` - файл профиль, который будет определять
+характеристики нашей системы для сборки и использования пакетов.  
+Профиль определяет пользователь, его содержимое никак не проверяется на соответствие реальной системы.
 
-Create profile
+Автоматически создать профиль
 ```
 conan profile detect --force
 ```
-Show path to profile with name ```default```
+Получить путь к профилю ```default```
 ```
 conan profile path default
 ```
-Templates:
-+ [Create library](./build-lib-project/README.md)
-+ [Use library](build-executable-project/doc/README.md)
-+ [Custom library server](conan-server/doc/README.md)
+
+### Готовые шаблоны для использования
+___
++ __Conan__
+  + [Создание своей библиотеки](./tools/conan_lib_preset/doc/README_RUS.md)
+  + [Использование своей библиотеки](./tools/conan_exec_preset/doc/README_RUS.md)
++ __Conan server__
+  + [Сервер библиотек](./conan-server/doc/README_RUS.md)
++ __Дополнительные шаблоны__
+  + [Использование локальных ресурсов для проекта](./tools/resources/doc/README_RUS.md)
+  
+  
+### Примеры использования шаблонов
+___
++ __Conan__
+    + [Создание своей библиотеки](./build-lib-project/doc/README_RUS.md)
+    + [Использование своей библиотеки](./build-executable-project/doc/README_RUS.md)

@@ -2,15 +2,6 @@ cmake_minimum_required(VERSION 3.26)
 
 message("=== connected conan library template ===")
 
-#macro(set_if_shadow_var_not_null arg_name)
-#    # change variable arg_name if arg_name is not null
-#    if (NOT ${${arg_name}_ex} STREQUAL "")
-#        set(${arg_name} ${${arg_name}_ex})
-#    endif ()
-#endmacro()
-#
-#set_if_shadow_var_not_null("conan")
-#set_if_shadow_var_not_null("conan_profile")
 
 macro(check_item arg)
     if(NOT EXISTS "${CMAKE_SOURCE_DIR}/${arg}")
