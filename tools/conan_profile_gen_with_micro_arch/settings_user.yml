@@ -1,0 +1,12 @@
+compiler:
+    gcc:
+        march: [null, x86-64, x86-64-v2, x86-64-v3., x86-64-v4, i386, i486, i586, pentium, lakemont, pentium-mmx,
+                pentiumpro, i686, pentium2, pentium3, pentium3m, pentium-m, pentium4, pentium4m, prescott, nocona,
+                core2, nehalem, westmere, sandybridge, ivybridge, haswell, broadwell, skylake, bonnell, silvermont,
+                goldmont, goldmont-plus, tremont, sierraforest, grandridge, clearwaterforest, knl, knm, skylake-avx512,
+                cannonlake, icelake-client, icelake-server, cascadelake, cooperlake, tigerlake, sapphirerapids, alderlake,
+                rocketlake, graniterapids, graniterapids-d, arrowlake, arrowlake-s, pantherlake, k6, k6-2, k6-3,
+                athlon, athlon-tbird, athlon-4, athlon-xp, athlon-mp, k8, opteron, athlon64, athlon-fx, k8-sse3,
+                opteron-sse3, athlon64-sse3, amdfam10, barcelona, bdver1, bdver2, bdver3, bdver4, znver1, znver2
+                znver3, znver4, znver5, btver1, btver2, winchip-c6, winchip2, c3, c3-2, c7, samuel-2, nehemiah,
+                esther, eden-x2, eden-x4, nano, nano-1000, nano-2000, nano-3000, nano-x2, nano-x4, lujiazui, yongfeng, geode]
