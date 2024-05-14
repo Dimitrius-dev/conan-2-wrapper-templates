@@ -75,5 +75,5 @@ ___
 ### Примеры использования шаблонов
 ___
 + __Conan__
-    + [Создание своей библиотеки](./build-lib-project/doc/README_RUS.md)
-    + [Использование своей библиотеки](./build-executable-project/doc/README_RUS.md)
+    + [Создание своей библиотеки](presets/build-lib-project/doc/README_RUS.md)
+    + [Использование своей библиотеки](presets/build-executable-project/doc/README_RUS.md)

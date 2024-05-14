@@ -27,4 +27,4 @@ include(ConanExecPreset.cmake)
 Фаза тестирования включается после компиляции библиотек на систему.  
 
 ___
-Пример: [использование своей библиотеки](./../../../build-lib-project/doc/README_RUS.md)
+Пример: [использование своей библиотеки](../../../presets/build-lib-project/doc/README_RUS.md)

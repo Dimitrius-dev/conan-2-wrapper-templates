@@ -61,6 +61,6 @@ conan profile detect --force
 conan profile path default
 ```
 Шаблоны создания и использования библиотеки:
-+ [Создание библиотеки](../build-lib-project/doc/README_RUS.md)
-+ [Использование библиотеки](../build-executable-project/doc/README_RUS.md)
++ [Создание библиотеки](../presets/build-lib-project/doc/README_RUS.md)
++ [Использование библиотеки](../presets/build-executable-project/doc/README_RUS.md)
 + [Сервер библиотек](../conan-server/doc/README_RUS.md)

@@ -24,4 +24,4 @@ include(CMakeResources.cmake)
 ```
 
 ___
-Пример: [использование своей библиотеки](./../../../build-executable-project/doc/README_RUS.md)
+Пример: [использование своей библиотеки](../../../presets/build-executable-project/doc/README_RUS.md)

@@ -22,4 +22,4 @@ include(ConanProfileGen.cmake)
 ```
 
 ___
-Пример: [создание своей библиотеки](./../../../build-lib-project/doc/README_RUS.md)
+Пример: [создание своей библиотеки](../../../presets/build-lib-project/doc/README_RUS.md)

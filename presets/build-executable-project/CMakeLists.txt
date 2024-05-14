@@ -7,7 +7,7 @@ macro(get_file url arg)
     endif ()
 endmacro()
 
-set(lib_url https://raw.githubusercontent.com/Dimitrius-dev/conan-2-wrapper-templates/dev/tools)
+set(lib_url https://raw.githubusercontent.com/Dimitrius-dev/conan-2-wrapper-templates/main/tools)
 
 
 # "conan_exec_preset" plugin
